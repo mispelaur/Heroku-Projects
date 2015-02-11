@@ -1,3 +1,3 @@
 class Move < ActiveRecord::Base
-  has_one :game
+  belongs_to :game
 end
