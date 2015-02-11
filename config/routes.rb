@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   get 'moves/index'
 
-  get 'moves/new'
-
-  get 'games/index'
-
-  get 'games/new'
-
-  get 'games/show'
-
   resources :games
 
   # The priority is based upon order of creation: first created -> highest priority.
