@@ -14,8 +14,10 @@ class Game < ActiveRecord::Base
   def self.generate_board(coordinates_array)
     @board = Array.new(9, 0)
     move_number = 0
+
+    
     #can be refactored yeh!
-    unless coordinates_array[0]='nil'  
+    unless coordinates_array.empty?
       while move_number < coordinates_array.length
         # binding.pry
         coordinates_array.each do |move|
