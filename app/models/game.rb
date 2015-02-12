@@ -6,15 +6,12 @@ class Game < ActiveRecord::Base
     self.moves.each do |move|
       coordinates_array << move.move_coordinate
     end
-
-
     coordinates_array
   end  
 
   def self.generate_board(coordinates_array)
     @board = Array.new(9, 0)
     move_number = 0
-
     
     #can be refactored yeh!
     unless coordinates_array.empty?
@@ -32,6 +29,18 @@ class Game < ActiveRecord::Base
       end
     end
     @board
+  end
+
+  def self.computer_move(board)
+    computer_array = Array.new
+    board.each_with_index do |cell, index|
+      if cell==0
+        computer_array << index
+      else
+        nil
+      end
+    end
+    computer_array.sample
   end
 
   def self.check_status

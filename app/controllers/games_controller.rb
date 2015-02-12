@@ -13,7 +13,8 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     coordinate_array = game.get_coordinates_array
     @board = Game.generate_board(coordinate_array)
-    @move = Move.new
+    @computer_move = Game.computer_move(@board)
+    # @move = Move.new
   end
 
   def create
