@@ -51,8 +51,16 @@ class Game < ActiveRecord::Base
     x.even?
   end
 
+  def self.game_over(board)
+    game_over=true
+    if board.include? 0
+      game_over=false
+    end
+    game_over
+  end
+
   def self.game_won_by(board)
-    two_d_board = @board.each_slice(3).to_a
+    two_d_board = board.each_slice(3).to_a
     game_won_by=0
     sums = Array.new
 
@@ -66,27 +74,35 @@ class Game < ActiveRecord::Base
       sums << column.inject(0, &:+).abs
     end
 
-    diag_one_sum = @board[0]+@board[4]+@board[8]
-    diag_two_sum = @board[2]+@board[4]+@board[6]
+    diag_one_sum = board[0]+board[4]+board[8]
+    diag_two_sum = board[2]+board[4]+board[6]
 
     sums << diag_one_sum << diag_two_sum
-
-    if @board.include? 0
-      sums.each do |x|
-        if x==-3
-          game_over=-1
-        elsif x==3
-          game_over=1
-        end
+    
+    sums.each do |x|
+      if x==-3
+        game_won_by=-1
+      elsif x==3
+        game_over=1
       end
-    else
-      game_over=0
     end
 
-    game_over
+    game_won_by
   end
 
-
+  def self.status(game_over, game_won_by)
+    status=false
+    unless game_over==false
+      if game_over && game_won_by==0 
+        status="draw"
+      elsif game_over && game_won_by==-1
+        status="X"
+      else game_over && game_won_by==1
+        status="O"
+      end
+    end
+    status
+  end
 
 
   

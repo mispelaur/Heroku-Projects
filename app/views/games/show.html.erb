@@ -1,5 +1,18 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
+
+<div class="status-message">
+  <% case @status %>
+  <% when "draw" %>
+    GAME IS A DRAW
+  <% when "X" %>
+    X WINS!
+  <% when "O" %>
+    O WINS!
+  <% when false %>
+    <% nil %>
+  <% end %>
+</div>
  
 <% if @computer_turn %>
   <div class="computer-button">

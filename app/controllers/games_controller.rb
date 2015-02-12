@@ -16,8 +16,9 @@ class GamesController < ApplicationController
     @computer_move = Game.computer_move(@board)
     @move = Move.new
     @computer_turn = Game.computer_turn(game)
-    @game_draw = Game.game_draw(game)
-    @game_won_by = Game.game_over(@board)
+    @game_over = Game.game_over(@board)
+    @game_won_by = Game.game_won_by(@board)
+    @status = Game.status(@game_over, @game_won_by)
   end
 
   def create
