@@ -1,6 +1,12 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
-<% binding.pry %>
+<p>
+  <%= form_for(@move) do |f| %>
+    <%= f.hidden_field :game_id, value: params[:id] %>
+    <%= f.hidden_field :move_coordinate, value: @computer_move %>
+    <%= f.submit "computer move" %>
+  <% end %>
+</p>
 
 <div>
   <% @board.each_with_index do |cell, index| %>
@@ -10,7 +16,7 @@
       <%= f.hidden_field :game_id, value: params[:id] %>
       <%= f.hidden_field :move_coordinate, value: index %>
       <%= f.submit "make move" %>
-  <% end %>
+    <% end %>
   <% elsif cell == -1 %>
     <%= "X" %>
   <% else %>
@@ -19,4 +25,23 @@
   </div>
   <% end %> 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

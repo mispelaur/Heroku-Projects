@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     coordinate_array = game.get_coordinates_array
     @board = Game.generate_board(coordinate_array)
     @computer_move = Game.computer_move(@board)
-    # @move = Move.new
+    @move = Move.new
   end
 
   def create

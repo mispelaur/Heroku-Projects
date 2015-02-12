@@ -1,4 +1,14 @@
+Computer player code:
 
+<p>
+  <%= form_for(@move) do |f| %>
+    <%= f.hidden_field :game_id, value: params[:id] %>
+    <%= f.hidden_field :move_coordinate, value: @computer_move %>
+    <%= f.submit "computer move" %>
+  <% end %>
+</p>
+
+---------
 
 <%= form_tag(new_move_path, :method => "post") do %>
     <%= form_for(@move) do |f| %>
