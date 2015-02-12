@@ -1,19 +1,23 @@
 
+
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
 
 <div>
   <% @board.each_with_index do |cell, index| %>
   <div>
-  <% if cell.is_a? Fixnum %>
-    <% if cell == -1 %>
-      <%= "X" %>
-    <% else %>
-      <%= "O" %>
-    <% end %>
-  <% else %> 
-      <%= link_to "Move: #{index}", new_move_path(game_id: params[:id], move_coordinate: index) %>
-    <% end %>
+  <% if cell == 0 %>
+    <%= form_for(@move) do |f| %>
+      <%= f.hidden_field :game_id, value: params[:id] %>
+      <%= f.hidden_field :move_coordinate, value: index %>
+      <%= f.submit "make move" %>
+  <% end %>
+  <% elsif cell == -1 %>
+    <%= "X" %>
+  <% else %>
+    <%= "O" %>
+  <% end %>
   </div>
-<% end %> 
+  <% end %> 
 </div>
+

@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   def new
   # instantiate a new game row in table then redirect to /games/:id
     @game = Game.new
+    # @move = Move.new
   end
 
   def show

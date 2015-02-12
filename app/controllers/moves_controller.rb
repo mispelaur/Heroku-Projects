@@ -10,9 +10,9 @@ class MovesController < ApplicationController
   end
 
   def create
-    @move = Move.create(move_params)
+    move = Move.create(move_params)
     if move.save
-      redirect_to(game_path)
+      redirect_to game_path(move.game_id)
     else
       render 'new'
     end
