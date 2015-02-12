@@ -43,20 +43,25 @@ class Game < ActiveRecord::Base
     computer_array.sample
   end
 
-  def self.computer_turn(game)
+  def self.computer_turn(game)#x true if even and < 8
     x = -1
     unless game.moves.empty?
       x = game.moves.last.id-game.moves.first.id
     end
-    x.even?
+    if x.even? && x<8
+      x=true
+    else
+      x=false
+    end
+    x
   end
 
-  def self.game_over(board)
-    game_over=true
+  def self.board_full(board)
+    board_full=true
     if board.include? 0
-      game_over=false
+      board_full=false
     end
-    game_over
+    board_full
   end
 
   def self.game_won_by(board)
@@ -67,11 +72,11 @@ class Game < ActiveRecord::Base
     two_d_board = board.each_slice(3).to_a
 
     two_d_board.each do |row|
-      sums << row.inject(0, &:+).abs
+      sums << row.inject(0, &:+)
     end
   
     two_d_board.transpose.each do |column|
-      sums << column.inject(0, &:+).abs
+      sums << column.inject(0, &:+)
     end
 
     diag_one_sum = board[0]+board[4]+board[8]
@@ -83,23 +88,21 @@ class Game < ActiveRecord::Base
       if x==-3
         game_won_by=-1
       elsif x==3
-        game_over=1
+        game_won_by=1
       end
     end
 
     game_won_by
   end
 
-  def self.status(game_over, game_won_by)
+  def self.status(board_full, game_won_by)
     status=false
-    unless game_over==false
-      if game_over && game_won_by==0 
-        status="draw"
-      elsif game_over && game_won_by==-1
-        status="X"
-      else game_over && game_won_by==1
-        status="O"
-      end
+    if board_full && game_won_by==0 
+      status="draw"
+    elsif game_won_by==-1
+      status="X"
+    elsif game_won_by==1
+      status="O"
     end
     status
   end
