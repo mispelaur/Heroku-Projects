@@ -1,4 +1,7 @@
 class MovesController < ApplicationController
+
+  
+  
   def index
   end
 
@@ -7,6 +10,7 @@ class MovesController < ApplicationController
     @move = Move.new
     game_id = params[:id]
     @move.game_id = game_id
+    @move.user=current_user
   end
 
   def create

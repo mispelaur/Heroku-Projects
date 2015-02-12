@@ -43,7 +43,47 @@ class Game < ActiveRecord::Base
     computer_array.sample
   end
 
-  def self.check_status
+  def self.computer_turn(game)
+    x = -1
+    unless game.moves.empty?
+      x = game.moves.last.id-game.moves.first.id
+    end
+    x.even?
+  end
+
+  def self.game_won_by(board)
+    two_d_board = @board.each_slice(3).to_a
+    game_won_by=0
+    sums = Array.new
+
+    two_d_board = board.each_slice(3).to_a
+
+    two_d_board.each do |row|
+      sums << row.inject(0, &:+).abs
+    end
+  
+    two_d_board.transpose.each do |column|
+      sums << column.inject(0, &:+).abs
+    end
+
+    diag_one_sum = @board[0]+@board[4]+@board[8]
+    diag_two_sum = @board[2]+@board[4]+@board[6]
+
+    sums << diag_one_sum << diag_two_sum
+
+    if @board.include? 0
+      sums.each do |x|
+        if x==-3
+          game_over=-1
+        elsif x==3
+          game_over=1
+        end
+      end
+    else
+      game_over=0
+    end
+
+    game_over
   end
 
 

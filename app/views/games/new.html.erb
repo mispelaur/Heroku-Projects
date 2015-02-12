@@ -1,3 +1,6 @@
 <h1>Games#new</h1>
 <p>Find me in app/views/games/new.html.erb</p>
-<%= link_to  %>
+
+<%= form_for @game do |f| %>
+  <p><%= f.submit "Let's start" %></p>
+<% end %>

@@ -1,28 +1,32 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
-<p>
-  <%= form_for(@move) do |f| %>
-    <%= f.hidden_field :game_id, value: params[:id] %>
-    <%= f.hidden_field :move_coordinate, value: @computer_move %>
-    <%= f.submit "computer move" %>
-  <% end %>
-</p>
+ 
+<% if @computer_turn %>
+  <div class="computer-button">
+    <%= form_for(@move) do |f| %>
+      <%= f.hidden_field :game_id, value: params[:id] %>
+      <%= f.hidden_field :move_coordinate, value: @computer_move %>
+      <%= f.submit "computer move" %>
+    <% end %>
+  </div>
+<% else %>
+  <% nil %>
+<% end %>
 
-<div>
+<div class="ttt-board">
   <% @board.each_with_index do |cell, index| %>
-  <div>
   <% if cell == 0 %>
     <%= form_for(@move) do |f| %>
       <%= f.hidden_field :game_id, value: params[:id] %>
       <%= f.hidden_field :move_coordinate, value: index %>
-      <%= f.submit "make move" %>
+      <%= f.submit " ", class: "ttt-cell" %>
     <% end %>
   <% elsif cell == -1 %>
-    <%= "X" %>
+    <div class="ttt-cell">X</div>
   <% else %>
-    <%= "O" %>
+    <div class="ttt-cell">O</div>
   <% end %>
-  </div>
+
   <% end %> 
 </div>
 

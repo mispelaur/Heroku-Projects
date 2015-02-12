@@ -15,6 +15,9 @@ class GamesController < ApplicationController
     @board = Game.generate_board(coordinate_array)
     @computer_move = Game.computer_move(@board)
     @move = Move.new
+    @computer_turn = Game.computer_turn(game)
+    @game_draw = Game.game_draw(game)
+    @game_won_by = Game.game_over(@board)
   end
 
   def create
