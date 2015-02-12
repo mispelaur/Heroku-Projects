@@ -1,6 +1,4 @@
 class MovesController < ApplicationController
-
-  
   
   def index
   end
@@ -10,11 +8,11 @@ class MovesController < ApplicationController
     @move = Move.new
     game_id = params[:id]
     @move.game_id = game_id
-    @move.user=current_user
   end
 
   def create
     move = Move.create(move_params)
+    move.user = current_user
     if move.save
       redirect_to game_path(move.game_id)
     else
@@ -24,6 +22,6 @@ class MovesController < ApplicationController
 
   private
   def move_params
-    params.require(:move).permit(:move_coordinate, :game_id)
+    params.require(:move).permit(:move_coordinate, :game_id, :user_id)
   end
 end
