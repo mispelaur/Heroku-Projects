@@ -1,10 +1,6 @@
 class GamesController < ApplicationController
 
-  def index
-  end
-
   def new
-  # instantiate a new game row in table then redirect to /games/:id
     @game = Game.new
   end
 
@@ -25,7 +21,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    #blank game form w/submit button
     game = Game.create
     if game.save
       redirect_to game
@@ -33,6 +28,5 @@ class GamesController < ApplicationController
       redirect root
     end
   end
-
 
 end

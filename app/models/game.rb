@@ -16,7 +16,6 @@ class Game < ActiveRecord::Base
     #can be refactored yeh!
     unless coordinates_array.empty?
       while move_number < coordinates_array.length
-        # binding.pry
         coordinates_array.each do |move|
           if move_number.even?
             @board[move]=-1
@@ -43,7 +42,7 @@ class Game < ActiveRecord::Base
     computer_array.sample
   end
 
-  def self.computer_turn(game)#x true if even and < 8
+  def self.computer_turn(game)
     x = -1
     unless game.moves.empty?
       x = game.moves.last.id-game.moves.first.id
@@ -107,7 +106,5 @@ class Game < ActiveRecord::Base
     status
   end
 
-
-  
 
 end
