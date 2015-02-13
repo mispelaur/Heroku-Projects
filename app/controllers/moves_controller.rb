@@ -11,6 +11,7 @@ class MovesController < ApplicationController
   end
 
   def create
+    # binding.pry
     move = Move.create(move_params)
     move.user = current_user
     if move.save

@@ -66,6 +66,13 @@
   text-align: center;
 }
 
+.welcome {
+  width: 465px;
+  margin: auto;
+  margin-top: 20px;
+  text-align:center;
+}
+
 
 /*div {
     width: 300px;
