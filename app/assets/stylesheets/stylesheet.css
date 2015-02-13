@@ -10,29 +10,61 @@
   border-color: black;
   margin: 2px;
   text-align: center;
-  font-size: 35px;
+  font-size: 25px;
   padding: 55px;
 }
 
 .ttt-board {
-  width: 500px;
-  height: 500px;
+  width: 465px;
+  height: 465px;
+  margin: auto;
+  text-align: center;
 }
 
-/*.status-message{
-  position: absolute;
+.devise {
+  width: 400px;
+  margin: auto;
+}
+
+.lets-start {
+  width: 465px;
+  height: 465px;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.status-message{
+  width: 465px;
+  height: 60px;
+  margin: auto;
+  margin-top: 20px;
   text-align:center;
-  top: 130px;
-  left: 0;
-  width: 475px;
-  height: 475px;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.5); 
-}*/
+  color: red;
+  font-size: 30px;
+}
 
+.computer-button {
+  width: 465px;
+  margin: auto;
+  margin-top: 20px;
+  text-align:center;
+}
 
+.scoreboard {
+  width: 465px;
+  margin: auto;
+  margin-top: 20px;
+}
 
-.computer-button {}
+.scoreboard, table {
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+.scoreboard, h3 {
+  text-align: center;
+}
 
 
 /*div {

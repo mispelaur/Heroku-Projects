@@ -1,7 +1,3 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
-
-
 <div class="status-message">
   <% case @status %>
   <% when "draw" %>
@@ -13,8 +9,7 @@
   <% when false %>
     <% nil %>
   <% end %>
-</div>
- 
+
 <% if @computer_turn && @status==false %>
   <div class="computer-button">
     <%= form_for(@move) do |f| %>
@@ -26,6 +21,8 @@
 <% else %>
   <% nil %>
 <% end %>
+</div>
+
 
 <div class="ttt-board">
   <% @board.each_with_index do |cell, index| %>
