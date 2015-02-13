@@ -6,7 +6,6 @@ class GamesController < ApplicationController
   def new
   # instantiate a new game row in table then redirect to /games/:id
     @game = Game.new
-    # @move = Move.new
   end
 
   def show
@@ -18,6 +17,10 @@ class GamesController < ApplicationController
     @computer_turn = Game.computer_turn(game)
     @board_full = Game.board_full(@board)
     @game_won_by = Game.game_won_by(@board)
+    if @game_won_by==-1
+      current_user.wins += 1
+      current_user.save
+    end
     @status = Game.status(@board_full, @game_won_by)
   end
 

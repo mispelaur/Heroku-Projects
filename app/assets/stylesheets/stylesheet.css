@@ -19,6 +19,17 @@
   height: 500px;
 }
 
+/*.status-message{
+  position: absolute;
+  text-align:center;
+  top: 130px;
+  left: 0;
+  width: 475px;
+  height: 475px;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); 
+}*/
+
 
 
 .computer-button {}
