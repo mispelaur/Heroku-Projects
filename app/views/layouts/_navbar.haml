@@ -1,0 +1,48 @@
+%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+  %ul.title-area
+    %li.name
+      %h1= link_to "TicTacToe", games_path
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    %ul.right
+      - if user_signed_in?
+        %li.right= link_to('Logout', destroy_user_session_path, :method => :delete)
+        %li.right= link_to('Edit registration', edit_user_registration_path)
+      - else
+        %li#italic.right= link_to('Register', new_user_registration_path)
+        %li#italic.right= link_to('Login', new_user_session_path)
+    %ul.left
+      %li= link_to "New Game", new_game_path
+      %li= link_to "Scoreboard", user_games_path
+
+/ <nav class="top-bar" data-topbar role="navigation">
+/   <ul class="title-area">
+/     <li class="name">
+/       <h1><%= link_to "TicTacToe", games_path %></h1>
+/     </li>
+    
+/     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+/   </ul>
+
+/   <section class="top-bar-section">
+
+/     <ul class="right">
+    
+/     <% if user_signed_in? %>
+/       <li class="right"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+/       <li class="right"><%= link_to('Edit registration', edit_user_registration_path) %></li>
+/     <% else %>
+/       <li class="right" id="italic"><%= link_to('Register', new_user_registration_path) %></li>
+/       <li class="right"id="italic"><%= link_to('Login', new_user_session_path) %></li>
+/     <% end %>
+/     </ul>
+
+
+/     <ul class="left">
+/       <li><%= link_to "New Game", new_game_path %></li>
+/       <li><%= link_to "Scoreboard", user_games_path %></li>
+/     </ul>
+/   </section>
+/ </nav>

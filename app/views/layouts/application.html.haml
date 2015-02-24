@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title TictactoeApp
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    = render partial: 'layouts/navbar'
+    .content
+      = yield
+
+/ <!DOCTYPE html>
+/ <html>
+/ <head>
+/   <title>TictactoeApp</title>
+/   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+/   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+/   <%= csrf_meta_tags %>
+/ </head>
+
+/ <body>
+
+/   <%= render partial: 'layouts/navbar' %>
+
+/   <div class="content">
+/     <%= yield %>
+/   </div>
+
+/ </body>
+/ </html>
