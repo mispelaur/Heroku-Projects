@@ -1,0 +1,33 @@
+.scoreboard
+  %table
+    %h3 Scoreboard
+    %thead
+      %tr
+        %th User
+        %th Wins
+    %tbody
+      - User.all.each do |user|
+        %tr
+          %td= user.email
+          %td= user.wins
+
+/ <div class="scoreboard">
+/   <table>
+/   <h3>Scoreboard</h3>
+/     <thead>
+/       <tr>
+/         <th>User</th>
+/         <th>Wins</th>
+/       </tr>
+/     </thead>
+/     <tbody>
+/       <% User.all.each do |user| %>  
+/       <tr>
+/         <td><%= user.email %></td>
+/         <td><%= user.wins %></td>
+/       </tr>
+/       <% end %>
+/     </tbody>
+/   </table>
+/ </div>
+
